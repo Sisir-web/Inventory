@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+{% block title %}HOME PAGE{% endblock title %}
+{% block main_content %}
+<section class="container">
+  <div class="row justify-content-around text-center text-white mt-5">
+    <div class="col-sm-8 ">
+      <h3>CRUD OPERATION</h3>
+    </div>
+  </div>
+<div class="row justify content-around mt-3">
+  <div class="col-sm-8">
+    <a href="{% url 'create' %}" class="btn btn-primary float-end">Add</a>
+  </div>
+</div>
+  <div class="row justify-content-around text-center text-white mt-1">
+    <div class="col-sm-8 ">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Phone</th>
+            <th scope="'col">Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for emp in empdata %}
+          <tr>
+            <th scope="row" >{{forloop.counter}}</th>
+            <td>{{emp.name}}</td>
+            <td>{{emp.age}}</td>
+            <td>{{emp.phone}}</td>
+            <td>{{emp.unit}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock main_content %}
