@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Police Department Item Allocation and Tracking System
 
 This is a Django-based web application designed to manage and track the allocation of government-issued items (such as boots, belts, caps, and uniforms) to police personnel across different units.
@@ -59,3 +60,7 @@ python manage.py runserver
 
 
 
+=======
+# Inventory
+A Django-based web application designed to manage and track the distribution of government-issued items (such as boots, belts, caps, and uniforms) to police personnel.  The system features role-based admin panels, where each admin can only manage employees and allocations for their respective units. 
+>>>>>>> 95807ae (Initial commit)
