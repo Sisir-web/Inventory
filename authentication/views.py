@@ -1,9 +1,11 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model,authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+# from django.contrib.auth import authenticate, login, logout
 
+User=get_user_model()
 
 # Create your views here.
 def home(request):
@@ -12,14 +14,18 @@ def home(request):
 def signup(request):
 
    if request.method == "POST":
-      username = request.POST['username']
-      fname = request.POST['fname']
-      lname = request.POST['lname']
-      mail = request.POST['email']
-      pass1 = request.POST['password1']
-      pass2 = request.POST['password2']
+      username = request.POST.get('username')
+      fname = request.POST.get('fname')
+      lname = request.POST.get('lname')
+      mail = request.POST.get('email')
+      pass1 = request.POST.get('password1')
+      pass2 = request.POST.get('password2')
 
-      myuser = User.objects.create_user(username,mail,pass1)
+      if pass1 != pass2:
+         messages.error(request, "Password Mismatch!")
+         return redirect('home')
+
+      myuser = User.objects.create_user(username=username,email=mail,password=pass1)
       myuser.first_name = fname
       myuser.last_name = lname
       myuser.save()

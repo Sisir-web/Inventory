@@ -1,14 +1,16 @@
 from django import forms
-from .models import Employee
+from authentication.models import CustomUser
 
 class AddEmployeeForm(forms.ModelForm):
 
    class Meta:
-      model = Employee
-      fields =("name","age","phone","unit")
-      widgets = {
-         'name':forms.TextInput(attrs={'class':'form-control'}),
-         'age':forms.NumberInput(attrs={'class':'form-control'}),
-         'phone':forms.NumberInput(attrs={'class':'form-control'}),
-         
-      }
+      model = CustomUser
+      fields =("age","phone","department","unit","designation")
+      widgets ={
+               'age':forms.NumberInput(attrs={'class':'form-control'}),
+               'phone':forms.NumberInput(attrs={'class':'form-control'}),
+               'department':forms.TextInput(attrs={'class':'form-control'}),
+               'unit':forms.TextInput(attrs={'class':'form-control'}),
+               'designation':forms.TextInput(attrs={'class':'form-control'}),
+               # 'isHead':forms.BooleanField(attrs={'class':'form-control'}),
+       }
